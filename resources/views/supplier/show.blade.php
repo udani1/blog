@@ -25,3 +25,7 @@
 <a class="btn btn-primary" href="{{route('supplier.index') }}"> Back </a>
 
 @endsection
+
+{{-- checking the git hub...............
+bhbbubuw
+jnndn --}}
