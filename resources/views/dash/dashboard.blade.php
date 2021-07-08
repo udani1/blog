@@ -13,10 +13,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
-        @include('partials.topbar')
+        @include('partials_old.topbar')
 
         <div id="layoutSidenav">
-            @include('partials.sidebar')  
+            @include('partials_old.sidebar')  
             
             <div id="layoutSidenav_content">
                 <main>
@@ -94,7 +94,7 @@
                     </div>
                 </main>
 
-             @include('partials.footer')
+             @include('partials_old.footer')
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>

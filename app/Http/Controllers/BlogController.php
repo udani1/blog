@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Blog;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;  
 
@@ -106,5 +107,17 @@ class BlogController extends Controller
         $blog->delete();
         return redirect()->route('blogs.index');
        
+    }
+
+    public function test(){      // 2021/06/24
+        //get the special data item from Blog table data
+        // $b= Blog::find(10);
+        // // return ($b) ;
+        // return view ('blogs.test' , compact('b'));
+
+        //use relationship or import, then get data from another table to another model
+        $b = User :: find (1)->passport() ->get('country') ;
+        return view ('blogs.test' , compact('b'));
+
     }
 }
