@@ -27,7 +27,7 @@
                 <th>Id</th>
                 <th>Title</th>
                 <th>Description</th>
-                {{-- <th>Action</th> --}}
+                <th>Actions</th>
             </tr>
         </thead>
 
@@ -51,7 +51,7 @@
                 {data: 'id' , name: 'id'} ,
                 {data: 'title' , name: 'title'} ,
                 {data: 'body' , name: 'body'} ,
-                //{data: 'action' , name: 'action'} ,
+                {data: 'action' , name: 'action'} , //addColumn eke liyana action coloumn eka gana me thiuyenne
             ]
         }
            
