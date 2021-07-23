@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use PDF;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,7 +38,7 @@ Route::get('ltedash', function () {
 });
 
 //search using SELECT2.org
-Route::get('search2','search2Controller@index')->name('search2');
+Route::get('search2','search2Controller@index')->name('search2'); 
 Route::get('select2-autocomplete','search2Controller@autocomplete');
 //search without using SELECT2.org (using laravel)
 Route::get('autocomplete','search2Controller@index');
@@ -50,3 +50,12 @@ Route::get('test','BlogController@test');
 //search datatable in DBController  //name is a nicname for controller's function as  a easily use in code pages
 Route::get('seedatatable','DbController@getdata') ->name('ajax.datatable');  
 Route::get('see','DbController@see'); //see datatable page
+
+Route::any('/remove/{id}','DbController@remove') ->name('ajax.remove');   
+
+//make HTML->PDF 
+Route::get('/pdf', function(){
+    $html ='<h1>Hello PDF</h1>';        //$html -> define the html content, we are going to convert into PDF
+    $pdf = PDF:: loadHtml($html);       //$pdf -> this variable directly use relevant Façade that we created in the app.php file
+    return $pdf->stream('test.pdf');    //If you want to download pdf file directly you can use download() method instead of stream()  ‘test.pdf’ is the intended file name.
+    });

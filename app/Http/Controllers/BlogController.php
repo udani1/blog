@@ -120,4 +120,6 @@ class BlogController extends Controller
         return view ('blogs.test' , compact('b'));
 
     }
+
+   
 }

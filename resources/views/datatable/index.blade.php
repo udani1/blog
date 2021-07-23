@@ -45,7 +45,7 @@
 
         var BASE = "{{ URL('/') }} /" ;
 
-        $('#table1').DataTable( {
+        var testtable = $('#table1').DataTable( {
             "ajax": "{!! route('ajax.datatable') !!}" ,
             columns: [
                 {data: 'id' , name: 'id'} ,
@@ -53,14 +53,32 @@
                 {data: 'body' , name: 'body'} ,
                 {data: 'action' , name: 'action'} , //addColumn eke liyana action coloumn eka gana me thiuyenne
             ]
-        }
-           
-       );
-    } );
+        } );
 
+        $('#table1') .on('click','#delete',function(){
+            //alert ('clicked');
+            var value = $(this).closest('tr').find('#hiddenID').val();
+            alert('Now you are about to see something new') ;
+            var params = {
+                id : $(this).closest('tr').find('#hiddenID').val(),
+                _token : $(this).data("token") , 
+            } ;
+            $.ajax({
+                url : BASE +'remove/'+ value ,
+                type :'delete',
+                dataType :'Json',
+                data :$.param(params),
+                success :function(response){
+                    alert(response.message) ;
+                }
+            }) ;
+            testtable      //delete una bawa index page eke penwanne meken
+            .row( $(this).parents('tr') )
+            .remove()
+            .draw() ;
+        }) ;
+    });
 
 </script>
-
-
 @endsection
 
